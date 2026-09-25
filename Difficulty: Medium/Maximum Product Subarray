@@ -1,1 +1,15 @@
-
+class Solution {
+  public:
+    int maxProduct(vector<int> &arr) {
+       int n = arr.size();
+       int perifix=1;
+       int surffix=1;
+       int maxi = INT_MIN;
+       for(int i=0;i<n;i++){
+           perifix = (perifix==0?1:perifix)*arr[i];
+           surffix = (surffix==0?1:surffix)*arr[n-i-1];
+           maxi = max(maxi, max(perifix,surffix));
+       }
+       return maxi;
+    }
+};
