@@ -1,0 +1,19 @@
+class Solution {
+  public:
+    int longestUniqueSubstr(string &s) {
+        int n = s.size();
+        int l =0;
+        int r =0;
+        int maxlen=0;
+        std:: unordered_map<char,int>mpp;
+        while(r<n){
+            if(mpp.count(s[r])&& mpp[s[r]]>=l){
+                l= mpp[s[r]]+1;
+            }
+            maxlen = max(maxlen, r-l+1);
+            mpp[s[r]]=r;
+            r++;
+        }
+        return maxlen;
+    }
+};
