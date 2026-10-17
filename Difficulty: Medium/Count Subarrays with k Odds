@@ -1,0 +1,27 @@
+class Solution {
+    public:
+    int ans(vector<int>&nums,int k){
+        if(k<0)return 0;
+         int n = nums.size();
+        int l=0,r=0,count=0;
+        long long sub=0;
+        while (r<n){
+             if(nums[r]%2!=0){
+                 count++;
+             } 
+          while(count>k){
+              if(nums[l]%2!= 0){
+                  count--;
+              }
+              l++;
+          }
+          sub+= r-l+1;
+          r++;  
+        }
+        return sub;
+    }
+    int countSubarrays(vector<int>& arr, int k) {
+       return (ans(arr,k)-ans(arr,k-1));
+        
+    }
+};
