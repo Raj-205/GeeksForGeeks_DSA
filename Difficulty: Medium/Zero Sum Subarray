@@ -1,0 +1,15 @@
+class Solution {
+  public:
+    bool subArrayExists(vector<int>& arr) {
+        int n= arr.size();
+        for(int l=0;l<n;l++){
+            int sum=0;
+            for(int r=l ; r<n;r++){
+                sum+= arr[r];
+            if(sum==0)return true ;
+            }
+            
+        }
+        return false;
+    }
+};
