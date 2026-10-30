@@ -1,0 +1,55 @@
+class Solution {
+  public:
+    string minWindow(string &s, string &t) {
+
+        int n = s.size();
+        int m = t.size();
+
+        int minLen = INT_MAX;
+        int start = -1;
+
+        int i = 0;
+
+        while(i < n){
+
+            int j = 0;
+
+            while(i < n){
+
+                if(s[i] == t[j])
+                    j++;
+
+                if(j == m)
+                    break;
+
+                i++;
+            }
+
+            if(j < m)
+                break;
+
+            int end = i + 1;
+
+            j = m - 1;
+
+            while(j >= 0){
+
+                if(s[i] == t[j])
+                    j--;
+
+                i--;
+            }
+
+            i++;
+
+            if(end - i < minLen){
+                minLen = end - i;
+                start = i;
+            }
+
+            i++;
+        }
+
+        return start == -1 ? "" : s.substr(start,minLen);
+    }
+};
