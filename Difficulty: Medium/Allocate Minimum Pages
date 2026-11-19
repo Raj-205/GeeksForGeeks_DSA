@@ -1,0 +1,31 @@
+class Solution {
+  public:
+    int findPages(vector<int> &arr, int k) {
+          int n = arr.size();
+             long long low = *max_element(arr.begin(), arr.end());
+             long long high = accumulate(arr.begin(), arr.end(),0LL);
+             if(k > arr.size()) return -1;
+             while(low<= high){
+                 long long mid = low + (high-low)/2;
+                 int noofbook=1;
+                 long long currt =0;
+                 for(int i=0;i<n;i++){
+                     if(arr[i]+currt <= mid){
+                         currt+=arr[i];   
+                     }
+                     else{
+                         noofbook++;
+                         currt= arr[i];
+                     }
+                 }
+                 if(noofbook<=k){
+                     high = mid - 1;
+                 }
+                 else{
+                     low = mid+1;
+                 }
+             }
+             return low;
+   
+    }
+};
