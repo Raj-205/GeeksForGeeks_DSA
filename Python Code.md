@@ -1,4 +1,4 @@
-## 01. Python Code
+## 01. Row with Max 1s in Rowwise Sorted
 
 The problem can be found at the following link: [Question Link](https://www.geeksforgeeks.org/problems/row-with-max-1s0023/1)
 
